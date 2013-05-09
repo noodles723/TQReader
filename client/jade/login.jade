@@ -1,0 +1,12 @@
+!!! 5
+html
+    include ./login/head
+    body
+        include ./login/logo
+        include ./login/form
+        include ./login/footer
+        script(src='./scripts/lib/require.js',data-main='./scripts/main.js')
+        script.
+            window.pageinfo = {
+                name: 'login'  
+            };
