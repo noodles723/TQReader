@@ -1,0 +1,19 @@
+div#reg-box.modal.hide.fade(tabindex='-1',role='dialog',aria-hidden='true',aria-labelledby='registerForm')
+    div.modal-header
+        button.close(type='button',data-dismiss='modal',aria-hidden='true') x
+        h3#regFormLabel Only one step
+    div.modal-body
+        form#signupform(method='post',action='./server/auth')
+            div.userName-div
+                label(for='userName')
+                    strong.userName-label UserName
+                input#userName(type='userName',value='',name='userName')
+            div.email-div
+                label(for='regEmail')
+                    strong.email-label Email
+                input#regEmail(type='email',value='',name='regEmail')
+            div.passwd-div
+                label(for='passwd')
+                    strong.passwd-label Password
+                input#passwd(type='password',name='passwd')
+            input#signup.button.button-submit(type='submit',value='Regist',name='signup')

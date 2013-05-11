@@ -1,0 +1,18 @@
+div#form.sign-in
+    div.signin-box
+        h2 Sign in
+        form#loginform(method='post',action='./server/auth')
+            div.email-div
+                label(for='Email')
+                    strong.email-label Email
+                input#Email(type='email',value='',name='Email',spellcheck='false')
+            div.passwd-div
+                label(for='Passwd')
+                    strong.passwd-label Password
+                input#Passwd(type='password',name='Passwd')
+            input#signIn.button.button-submit(type='submit',value='Sign in',name='signIn')
+            label.remember
+                input#PersistentCookie(type='checkbox',checked='checked',value='yes',name='PersistentCookie')
+                strong.remember-label Stay signed in
+        div#register-div Don't have an account? 
+            a(href='#reg-box',data-toggle='modal') Click here.

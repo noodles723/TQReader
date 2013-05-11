@@ -1,0 +1,14 @@
+!!! 5
+html
+    include ./login/head
+    body
+        div.main.content.clearfix
+            include ./login/logo
+            include ./login/loginForm
+        include ./login/footer
+        include ./login/regForm
+        script.
+            window.pageinfo = {
+                name: 'login'  
+            };
+        script(type='text/javascript',src='./scripts/lib/require.js',data-main='./scripts/main.js')

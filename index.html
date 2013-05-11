@@ -1,8 +1,85 @@
 <!DOCTYPE html>
 <html>
-    <title>TQReader</title>
-    <script type="text/javascript">
-        window.location.href = "./client/login.html";
+  <head>  
+    <meta charset="UTF-8">
+    <meta name="application-name" content="TQReader-login">
+    <meta name="description" content="the login page to TQReader">
+    <link href="./images/favicon.ico" rel="SHORTCUT ICON">
+    <noscript>
+      "<style>
+          div {display: none;}
+          table {display: none;}
+          #noscript {padding: 3em;font-size:130%;}
+      </style>
+      <p id='noscript'>Your browser seems disabled Javascript, if you want to use TQReader please enable Javascript, then <a href='../'>Try again</a> or refresh the page</p>
+      "
+    </noscript>
+    <script type="text/javascript" src="./scripts/store.js"></script>
+    <script>
+      if (window._localStorage.get('email') ||
+          window._cookie.get('email'))
+      {
+          //window._localStorage.remove('email');
+           window.location.href = './main.html';    
+      }
     </script>
-    <body></body>
+    <link href="./styles/login.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="main content clearfix">
+      <div id="logo"></div>
+      <div id="form" class="sign-in">
+        <div class="signin-box">
+          <h2>Sign in</h2>
+          <form id="loginform" method="post" action="./server/auth">
+            <div class="email-div">
+              <label for="Email"><strong class="email-label">Email</strong></label>
+              <input id="Email" type="email" value="" name="Email" spellcheck="false">
+            </div>
+            <div class="passwd-div">
+              <label for="Passwd"><strong class="passwd-label">Password</strong></label>
+              <input id="Passwd" type="password" name="Passwd">
+            </div>
+            <input id="signIn" type="submit" value="Sign in" name="signIn" class="button button-submit">
+            <label class="remember">
+              <input id="PersistentCookie" type="checkbox" checked="checked" value="yes" name="PersistentCookie"><strong class="remember-label">Stay signed in</strong>
+            </label>
+          </form>
+          <div id="register-div">Don't have an account? <a href="#reg-box" data-toggle="modal">Click here.</a></div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="footer clearfix"> <span>Made by Wang Tianqi, noodles.q@gmail.com</span></div>
+    </div>
+    <div id="reg-box" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="registerForm" class="modal hide fade">
+      <div class="modal-header">
+        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">x</button>
+        <h3 id="regFormLabel">Only one step</h3>
+      </div>
+      <div class="modal-body">
+        <form id="signupform" method="post" action="./server/auth">
+          <div class="userName-div">
+            <label for="userName"><strong class="userName-label">UserName</strong></label>
+            <input id="userName" type="userName" value="" name="userName">
+          </div>
+          <div class="email-div">
+            <label for="regEmail"><strong class="email-label">Email</strong></label>
+            <input id="regEmail" type="email" value="" name="regEmail">
+          </div>
+          <div class="passwd-div">
+            <label for="passwd"><strong class="passwd-label">Password</strong></label>
+            <input id="passwd" type="password" name="passwd">
+          </div>
+          <input id="signup" type="submit" value="Regist" name="signup" class="button button-submit">
+        </form>
+      </div>
+    </div>
+    <script>
+      window.pageinfo = {
+          name: 'login'  
+      };
+    </script>
+    <script type="text/javascript" src="./scripts/lib/require.js" data-main="./scripts/main.js"></script>
+  </body>
 </html>
