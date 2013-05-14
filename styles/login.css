@@ -234,6 +234,8 @@ button.button, input.button[type='submit'] {
   margin: 0 auto; }
   #signupform div {
     margin: 0 0 1.5em; }
+  #signupform #reg-result {
+    margin-top: 2em; }
 
 #footer {
   border-top: 1px solid #ebebeb;
