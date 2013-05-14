@@ -13,10 +13,11 @@ head
         "
     script(type='text/javascript',src='./scripts/store.js')
     script.
-        if (window._localStorage.get('email') ||
-            window._cookie.get('email'))
+        if (window._localStorage.get('tq_email') ||
+            window._cookie.get('tq_email'))
         {
-            //window._localStorage.remove('email');
-             window.location.href = './main.html';    
+            //window._localStorage.remove('tq_email');
+            //window._cookie.set('tq_email','','1970-1-1');
+            window.location.href = './main.html';    
         }
     link(href='./styles/login.css',type='text/css',rel='stylesheet')

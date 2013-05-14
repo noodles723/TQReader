@@ -22,8 +22,13 @@
             return value;
         },
         // set cookie
-        set: function(name,value){
-            document.cookie = name+'='+value;
+        set: function(name,value,time){
+            if (time) {
+                var expires = new Date(time).toUTCString();
+                document.cookie = name+'='+value+';expires='+expires;
+            } else {
+                document.cookie = name+'='+value;
+            }
         }
     };
 

@@ -5,12 +5,12 @@ div#form.sign-in
             div.email-div
                 label(for='Email')
                     strong.email-label Email
-                input#Email(type='email',value='',name='Email',spellcheck='false')
+                input#Email(type='email',value='',name='Email',spellcheck='false',data-toggle='popover',data-placement='top',data-content='Cannot find the email') 
             div.passwd-div
                 label(for='Passwd')
                     strong.passwd-label Password
-                input#Passwd(type='password',name='Passwd')
-            input#signIn.button.button-submit(type='submit',value='Sign in',name='signIn')
+                input#Passwd(type='password',name='Passwd',data-toggle='popover',data-placement='top',data-content='Wrong password')
+            input#signIn.button.button-submit(type='submit',value='Sign in',name='signIn',data-toggle='popover',data-placement='right',data-content='The sign in form cannot be empty')
             label.remember
                 input#PersistentCookie(type='checkbox',checked='checked',value='yes',name='PersistentCookie')
                 strong.remember-label Stay signed in

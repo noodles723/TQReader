@@ -25,19 +25,30 @@ var Login = (function(){
          */
         $('#signupform').submit($.proxy(function(evt){
             evt.preventDefault();
-            //var form = $(this).serialize().split('&');
-            //form[2] = 'passwd='+$.md5(form[2]);
-            //console.log(form);
-            //Auth.regist(form.join('&'));
+            //先验证一下
             var form = this.validateRegForm();
             if (form){
                 Auth.regist(form);
-            } else {
-            
-            }
+            } 
             return false;
         },this));
         
+        /**
+         * 登录表单提交事件监听
+         *
+         * @event submit
+         * @param {Object} EventObject
+         */
+        $('#loginform').submit($.proxy(function(evt){
+            evt.preventDefault();
+            $('#signIn').popover('destroy');
+            var form = this.validateLoginForm();
+            if (form){
+                Auth.login(form);
+            }
+            return false;
+        },this));
+
         /**
          * 添加关闭注册框事件监听
          *
@@ -49,9 +60,17 @@ var Login = (function(){
             $('#passwd').attr('value','');
             $('#reg-result').text('').attr('class','');
         });
-
+        
+        $('#Email').on('focus',function(){
+            $('#signIn').popover('destroy');
+            $('#Email').popover('destroy');
+        });
+        $('#Passwd').on('focus',function(){
+            $('#signIn').popover('destroy');
+            $('#Passwd').popover('destroy');
+        });
         /**
-         * 验证输入参数是否符合格式
+         * 验证注册表单输入参数是否符合格式
          *
          * @method validateRegForm
          */
@@ -78,6 +97,34 @@ var Login = (function(){
                 $('#reg-result').append(Validator.message.join('</br>')).attr('class','alert alert-error');
                 return false;
             }
+        };
+
+        /**
+         * 验证登录表单输入参数是否符合格式
+         *
+         * @method validateLoginForm
+         */
+        this.validateLoginForm = function(){
+            var data = {};
+            
+            data.email = $('#Email').val();
+            data.passwd = $('#Passwd').val();
+
+            Validator.config = {
+                email: 'isNonEmpty',
+                passwd: 'isNonEmpty'
+            };
+           // debugger;
+            Validator.validate(data);
+            if(!Validator.hasErrors()){
+                data.passwd = $.md5(data.passwd);
+                $('#signIn').popover('hide');
+                return 'Email='+data.email+'&Passwd='+data.passwd;
+            } else {
+                $('#signIn').popover('toggle');
+                return false;
+            }
+
         };
     }
 

@@ -15,7 +15,7 @@ define(['jquery'],function($){
     }
 
     var Auth = {
-        api: './server/auth/regist.php',
+        api: './server/auth/',
         failRedict: './index.html',
         succRedict: './main.html',
 
@@ -29,7 +29,7 @@ define(['jquery'],function($){
             console.log(formStr);
             $.ajax({
                 type: 'POST', 
-                url: this.api,
+                url: this.api+'regist.php',
                 dataType: 'json',
                 data: formStr
             })
@@ -50,16 +50,54 @@ define(['jquery'],function($){
                 }
                 console.log(log);
                 $('#reg-result').text(log);
-                /*if(res.status === 'success') {
-                    window.location.href = this.succRedict;
-                } else {
-                    console.log('Warning: regist: failed\n');
-                    window.location.href = this.failRedict+'#failed';
-                }*/
             },this))
             .fail($.proxy(function(res){
                 console.log('Warning: regist: ajax failed\n');
-                //failHandle.call(this,res);
+                failHandle.call(this,res);
+            },this));
+        },
+
+        /**
+         * 登录函数
+         *
+         * @method login
+         * @param {String} formStr
+         */
+        login: function(formStr){
+            console.log(formStr);
+            $.ajax({
+                type: 'POST',
+                url: this.api+'login.php',
+                dataType: 'json',
+                data: formStr
+            })
+            .success($.proxy(function(res){
+                console.log(res);
+                if (res.status == 'success') {
+                    if($('#PersistentCookie').attr('checked')) {
+                        window._cookie.set('tq_name',res.name,'2014-1-1');
+                        window._cookie.set('tq_email',res.email,'2014-1-1');
+                        window.localStorage.setItem('tq_name',res.name);
+                        window.localStorage.setItem('tq_email',res.email);
+                    } else {
+                        window._cookie.set('tq_name',res.name,'1970-1-1');
+                        window._cookie.set('tq_email',res.email,'1970-1-1');
+                        window.localStorage.removeItem('tq_name');
+                        window.localStorage.removeItem('tq_email');
+                    }
+                    window.location.href = this.succRedict;
+                } else if (res.status === 'noUser') {
+                    $('#Email').popover('show');
+                } else if (res.status === 'wrongPasswd') {
+                    $('#Passwd').popover('show');
+                } else {
+                    console.log('Warning: regist: failed\n');
+                    window.location.href = this.failRedict+'#failed';
+                }
+            },this))
+            .fail($.proxy(function(res){
+                console.log('Warning: regist: ajax failed\n');
+                failHandle.call(this,res);
             },this));
         }
     };

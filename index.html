@@ -16,11 +16,12 @@
     </noscript>
     <script type="text/javascript" src="./scripts/store.js"></script>
     <script>
-      if (window._localStorage.get('email') ||
-          window._cookie.get('email'))
+      if (window._localStorage.get('tq_email') ||
+          window._cookie.get('tq_email'))
       {
-          //window._localStorage.remove('email');
-           window.location.href = './main.html';    
+          //window._localStorage.remove('tq_email');
+          //window._cookie.set('tq_email','','1970-1-1');
+          window.location.href = './main.html';    
       }
     </script>
     <link href="./styles/login.css" type="text/css" rel="stylesheet">
@@ -34,13 +35,13 @@
           <form id="loginform" method="post" action="./server/auth">
             <div class="email-div">
               <label for="Email"><strong class="email-label">Email</strong></label>
-              <input id="Email" type="email" value="" name="Email" spellcheck="false">
+              <input id="Email" type="email" value="" name="Email" spellcheck="false" data-toggle="popover" data-placement="top" data-content="Cannot find the email">
             </div>
             <div class="passwd-div">
               <label for="Passwd"><strong class="passwd-label">Password</strong></label>
-              <input id="Passwd" type="password" name="Passwd">
+              <input id="Passwd" type="password" name="Passwd" data-toggle="popover" data-placement="top" data-content="Wrong password">
             </div>
-            <input id="signIn" type="submit" value="Sign in" name="signIn" class="button button-submit">
+            <input id="signIn" type="submit" value="Sign in" name="signIn" data-toggle="popover" data-placement="right" data-content="The sign in form cannot be empty" class="button button-submit">
             <label class="remember">
               <input id="PersistentCookie" type="checkbox" checked="checked" value="yes" name="PersistentCookie"><strong class="remember-label">Stay signed in</strong>
             </label>
