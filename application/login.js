@@ -2,7 +2,8 @@
 define(['application/widget/auth.js',
         'application/widget/validate.js',
         'application/widget/event.js',
-        'application/widget/md5.js'
+        'application/widget/md5.js',
+        '../scripts/lib/bootstrap.js'
         ],function(Auth,Validator,Event){
 /**
  * login class

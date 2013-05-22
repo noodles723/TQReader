@@ -1,0 +1,27 @@
+!!! 5
+html
+    head
+        include ./overview/head
+    body
+        include ./overview/loading
+        div#quick-add-bubble-holder(style='left:28px;top:109px;display:none;')
+            include ./overview/quick-add-form
+        div#main
+            div#nav
+                include ./overview/nav
+            div#chrome.page-view
+                div#chrome-viewer-cotainer
+                    div#chrome-viewer
+                        div#viewer-header-container
+                            include ./overview/viewer-header
+                        div#chrome-fullscreen-top-toggle.hidden
+                        div#viewer-container
+                            div#viewer-entries-container
+                                include ./overview/viewer-entries-container
+                            div#viewer-page-container
+                                include ./overview/viewer-page-container
+        script.
+            window.pageinfo = {
+                name: 'overview'  
+            };
+        script(type='text/javascript',src='./scripts/lib/require.js',data-main='./scripts/main.js')

@@ -1,10 +1,169 @@
-<!DOCTYPE HTML>
-<html lang="en">
-<head>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TQReader</title>
     <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-    <h1>overview</h1>
-</body>
+    <link href="./images/favicon.ico" rel="SHORTCUT ICON">
+    <meta name="application-name" content="TQReader">
+    <meta name="description" content="get all your favourites in one place">
+    <noscript>
+      "<style>
+          div {display: none;}
+          table {display: none;}
+          #noscript {padding: 3em;font-size:130%;}
+      </style>
+      <p id='noscript'>Your browser seems disabled Javascript, if you want to use TQReader please enable Javascript, then <a href='../'>Try again</a> or refresh the page.</p>
+      "
+    </noscript>
+    <script type="text/javascript" src="./scripts/store.js"></script>
+    <script>
+      if (!(window.localStorage.getItem('tq_email') || window._cookie.get('tq_email')))
+      {
+          window.location.href = './index.html';    
+      }
+    </script>
+    <!--link(href='./styles/global.css',type='text/css',rel='stylesheet')-->
+    <link href="./styles/reader-ui.css" type="text/css" rel="stylesheet">
+    <link href="./styles/reader-ui-medium.css" type="text/css" rel="stylesheet">
+    <link href="./styles/scroll.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="loading-area-container" class="message-area-container hidden">
+      <div class="goog-inline-block">
+        <div id="loading-area" class="jfk-butterBar jfk-butterBar-shown jfk-butterBar-info">Loading... </div>
+      </div>
+    </div>
+    <div id="quick-add-bubble-holder" style="left:28px;top:109px;display:none;">
+      <form id="quick-add-form"><span id="quick-add-instructions">Enter a search term to find feeds or paste a feed URL.</span>
+        <div id="quick-add-close"></div>
+        <div id="quick-add-input-div">
+          <input id="quickadd" type="text" name="quickadd" autocomplete="off" spellcheck="false" style="width:225px;" required>
+          <div role="wairole:button" tabindex="0" id="quick-add-btn" class="goog-button goog-button-base unselectable goog-inline-block goog-button-float-left goog-button-tight">
+            <div class="goog-button-base-outer-box goog-inline-block">
+              <div class="goog-button-base-inner-box goog-inline-block">
+                <div class="goog-button-base-pos">
+                  <div class="goog-button-base-content">
+                    <div class="goog-button-body">Add</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="quick-add-helptext">e.g: googleblog.bolgspot.com or sky sports</div>
+      </form>
+    </div>
+    <div id="main">
+      <div id="nav">
+        <div id="logo-section"><a id="logo-link" href="index.html">TQReader</a></div>
+        <div id="lhn-add-subscription-section"><span id="lhn-add-subscription" role="button" tabindex="0" class="jfk-button-primary jfk-button jfk-button-clear-outline">Subscribe</span></div>
+        <div id="scrollable-sections-holder">
+          <div id="scrollable-sections" class="mouseout">
+            <div id="home-section">
+              <div id="overview-selector" class="selector no-icon"><a href="#overview-page" class="link"><span class="text">Home</span></a></div>
+            </div>
+            <div id="lhn-subscriptions" class="section lhn-section">
+              <div id="lhn-subscriptions-minimize" class="section-button section-minimize"></div>
+              <div id="lhn-subscriptions-menubutton" aria-expanded="false" role="button" tabindex="=" aria-haspopup="true" aria-activedescendant class="section-button section-menubutton goog-menu-button goog-inline-block">
+                <div class="goog-inline-block goog-menu-button-outer-box">
+                  <div class="goog-inline-block goog-menu-button-inner-box">
+                    <div class="goog-inline-block goog-menu-button-caption">
+                      <div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="lhn-section-primary"><span id="sub-tree-header" class="unselectable">Subscriptions</span><span id="sub-tree-refreshing" class="hidden">refreshing...</span></div>
+              <div id="sub-tree-container" class="scroll-tree-container lhn-section-secondary">
+                <ul id="sub-tree" class="scroll-tree">
+                  <li id="sub-tree-item-0-main" class="folder unselectable expanded"></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div id="scrollable-sections-top-shadow"></div>
+          <div id="scrollable-sections-buttom-shadow"></div>
+        </div>
+      </div>
+      <div id="chrome" class="page-view">
+        <div id="chrome-viewer-cotainer">
+          <div id="chrome-viewer">
+            <div id="viewer-header-container"></div>
+            <div id="chrome-fullscreen-top-toggle" class="hidden"></div>
+            <div id="viewer-container">
+              <div id="viewer-entries-container"></div>
+              <div id="viewer-page-container">
+                <div class="viewer-page">
+                  <div id="home">
+                    <div id="sections-header">
+                      <div class="contents">
+                        <div class="lhn-nav-button-container">
+                          <div role="wairole:button" tabindex="0" id="chrome-lhn-menu" class="goog-button goog-button-base unselectable goog-inline-block goog-button-float-left goog-menu-button goog-button-tight hidden">
+                            <div class="goog-button-base-outer-box goog-inline-block">
+                              <div class="goog-button-base-inner-box goog-inline-block">
+                                <div class="goog-button-base-pos">
+                                  <div class="goog-button-base-content">
+                                    <div class="goog-button-body">Navigation</div>
+                                    <div class="goog-menu-button-dropdown"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="overview-section-header">A look at what's new in your Reader</div>
+                        <div class="settings-button-container">
+                          <div role="button" id="settings-button" tabindex="0" title="Settings" class="goog-inline-block jfk-button jfk-button-standard viewer-buttons goog-flat-menu-button">
+                            <div class="goog-inline-block goog-flat-menu-button-caption"><img src="../images/settings.png" class="jfk-button-img"></div>
+                            <div class="goog-inline-block goog-flat-menu-button-dropdown">&nbsp;</div>
+                          </div>
+                        </div>
+                        <div class="clear"></div>
+                      </div>
+                    </div>
+                    <div id="sections-holder">
+                      <div id="sections">
+                        <div id="right-section">
+                          <div class="overview-section">
+                            <div id="recent-activity" class="section">
+                              <div id="recent-activity-star" class="recent"></div>
+                              <div id="recent-activity-read" class="recent"></div>
+                            </div>
+                            <div id="tips">
+                              <div class="section-header">Tips and tricks</div>
+                              <div id="tips-body">
+                                <p>here's some tips</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="left-section">
+                          <div class="overview-section">
+                            <div id="overview">
+                              <div class="section-header">New in your subscriptions</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="overview-footer">
+                        <div id="footer">
+                          <div class="copyright">© This Reader was made by Tianqi Wang, noodles.q@gmail.com</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      window.pageinfo = {
+          name: 'overview'  
+      };
+    </script>
+    <script type="text/javascript" src="./scripts/lib/require.js" data-main="./scripts/main.js"></script>
+  </body>
 </html>

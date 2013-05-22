@@ -20,7 +20,8 @@ if($result->num_rows == 0){
     if ($passwd == $row->password){
         $res = array('status'=>'success',
                      'email'=>$row->email,
-                     'name'=>$row->name);
+                     'name'=>$row->name,
+                     'id'=>$row->userId);
     } else {
         $res = array('status'=>'wrongPasswd');
     }

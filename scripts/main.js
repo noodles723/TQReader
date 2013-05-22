@@ -17,7 +17,7 @@ require.config({
 require(['jquery', 'scripts/lang'], function($){
 
     if (window.pageinfo && window.pageinfo.name){
-        require(['../application/' + window.pageinfo.name,'lib/bootstrap'],function(Page){
+        require(['../application/' + window.pageinfo.name],function(Page){
            this.page = new Page(); 
         });
     } else {

@@ -77,13 +77,17 @@ define(['jquery'],function($){
                     if($('#PersistentCookie').attr('checked')) {
                         window._cookie.set('tq_name',res.name,'2014-1-1');
                         window._cookie.set('tq_email',res.email,'2014-1-1');
+                        window._cookie.set('tq_userId',res.id,'2014-1-1');
                         window.localStorage.setItem('tq_name',res.name);
                         window.localStorage.setItem('tq_email',res.email);
+                        window.localStorage.setItem('tq_userId',res.id);
                     } else {
                         window._cookie.set('tq_name',res.name,'1970-1-1');
                         window._cookie.set('tq_email',res.email,'1970-1-1');
+                        window._cookie.set('tq_userId',res.id,'1970-1-1');
                         window.localStorage.removeItem('tq_name');
                         window.localStorage.removeItem('tq_email');
+                        window.localStorage.removeItem('tq_userId');
                     }
                     window.location.href = this.succRedict;
                 } else if (res.status === 'noUser') {

@@ -17,10 +17,10 @@
     </noscript>
     <script type="text/javascript" src="./scripts/store.js"></script>
     <script>
-      if (window.localStorage.getItem('tq_email') ||
+      if (window._localStorage.get('tq_email') ||
           window._cookie.get('tq_email'))
       {
-          //window.localStorage.removeItem('tq_email');
+          //window._localStorage.remove('tq_email');
           //window._cookie.set('tq_email','','1970-1-1');
           window.location.href = './main.html';    
       }

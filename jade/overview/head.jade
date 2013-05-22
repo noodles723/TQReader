@@ -1,0 +1,24 @@
+title TQReader
+meta(charset='UTF-8')
+link(href='./images/favicon.ico',rel='SHORTCUT ICON')
+meta(name='application-name',content='TQReader')
+meta(name='description',content='get all your favourites in one place')
+noscript.
+    "<style>
+        div {display: none;}
+        table {display: none;}
+        #noscript {padding: 3em;font-size:130%;}
+    </style>
+    <p id='noscript'>Your browser seems disabled Javascript, if you want to use TQReader please enable Javascript, then <a href='../'>Try again</a> or refresh the page.</p>
+    "
+script(type='text/javascript',src='./scripts/store.js')
+script.
+    if (!(window.localStorage.getItem('tq_email') || window._cookie.get('tq_email')))
+    {
+        window.location.href = './index.html';    
+    }
+//link(href='./styles/global.css',type='text/css',rel='stylesheet')
+link(href='./styles/reader-ui.css',type='text/css',rel='stylesheet')
+link(href='./styles/reader-ui-medium.css',type='text/css',rel='stylesheet')
+link(href='./styles/scroll.css',type='text/css',rel='stylesheet')
+

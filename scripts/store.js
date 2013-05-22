@@ -32,25 +32,25 @@
         }
     };
 
-    window._localStorage = {
+    /*window._localStorage = {
         set: function(name,value){
-            try{
-                var stringValue = JSON.stringify(value);
-                window.localStorage.setItem(name,stringValue);
-            } catch(e){
+            //try{
+                //var stringValue = JSON.stringify(value);
+                //window.localStorage.setItem(name,stringValue);
+            //} catch(e){
                 window.localStorage.setItem(name,value);
-            }
+            //}
         },
         get: function(name){
             var value = window.localStorage.getItem(name);
-            try{
-                return JSON.parse(value);
-            } catch(e){
+            //try{
+                //return JSON.parse(value);
+            //} catch(e){
                 return value;
-            }
+            //}
         },
         remove: function(name){
             window.localStorage.removeItem(name);
         }
-    };
+    };*/
 })();
