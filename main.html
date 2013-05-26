@@ -85,14 +85,56 @@
           <div id="scrollable-sections-buttom-shadow"></div>
         </div>
       </div>
-      <div id="chrome" class="page-view">
+      <div id="chrome">
         <div id="chrome-viewer-cotainer">
           <div id="chrome-viewer">
-            <div id="viewer-header-container"></div>
+            <div id="viewer-header-container">
+              <div id="viewer-header">
+                <div id="viewer-top-controls-container">
+                  <div id="viewer-top-controls">
+                    <div class="lhn-nav-button-container"></div>
+                    <div role="button" id="viewer-refresh" tabindex="0" title="Refresh" class="goog-inline-block jfk-button jfk-button-standard viewer-buttons"><img src="./images/refresh.png" class="jfk-button-img"></div>
+                    <div id="viewer-view-options" aria-expanded="false" role="listbox" tabindex="0" class="goog-inline-block goog-flat-menu-button">
+                      <div class="goog-inline-block goog-flat-menu-button-caption">All items</div>
+                      <div class="goog-inline-block goog-flat-menu-button-dropdown">&nbsp;</div>
+                    </div><span id="mark-all-as-read-split-button">
+                      <div role="button" tabindex="0" class="goog-inline-block jfk-button jfk-button-standard jfk-button-collapse-right">Mark all as read</div>
+                      <div tabindex="0" class="goog-inline-block goog-flat-menu-button goog-flat-menu-button-collapse-left ml-5">
+                        <div class="goog-inline-block goog-flat-menu-button-caption"></div>
+                        <div class="goog-inline-block goog-flat-menu-button-dropdown">&nbsp;</div>
+                      </div></span>
+                    <div role="wairole:button" tabindex="0" id="stream-prefs-menu" class="goog-button goog-button-base unselectable goog-inline-block goog-button-float-left goog-menu-button goog-button-tight">
+                      <div class="goog-button-base-outer-box goog-inline-block">
+                        <div class="goog-button-base-inner-box goog-inline-block">
+                          <div class="goog-button-base-pos">
+                            <div class="goog-button-base-content">
+                              <div class="goog-button-body">Feed settings...</div>
+                              <div class="goog-menu-button-dropdown"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div><span id="settings-button-container">
+                      <div role="button" id="settings-button" tabindex="0" title="Settings" class="goog-inline-block jfk-button jfk-button-standard viewer-buttons goog-flat-menu-button">
+                        <div class="goog-inline-block goog-flat-menu-button-caption"><img src="./images/settings.png" class="jfk-button-img"></div>
+                        <div class="goog-inline-block goog-flat-menu-button-dropdown">&nbsp;</div>
+                      </div></span><span id="item-up-down-buttons">
+                      <div role="button" id="entries-up" tabindex="0" title="Previous item" class="goog-inline-block jfk-button jfk-button-standard jfk-button-collapse-right jfk-button-narrow"><img src="./images/up_arrow.png" class="jfk-button-img"></div>
+                      <div role="button" id="entries-down" tabindex="0" title="Next item" class="goog-inline-block jfk-button jfk-button-standard jfk-button-collapse-left jfk-button-narrow ml-5"><img src="./images/down_arrow.png" class="jfk-button-img"></div></span>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div id="chrome-fullscreen-top-toggle" class="hidden"></div>
             <div id="viewer-container">
-              <div id="viewer-entries-container"></div>
-              <div id="viewer-page-container">
+              <div id="viewer-entries-container">
+                <div id="title-and-status-holder"><span id="chrome-title"><a target="_blank"><span id="chevron">»</span></a></span></div>
+                <div class="samedir">
+                  <div id="quick-add-success" class="hidden">"You have subscribed to ""<span id="quick-add-success-title"></span>""."</div>
+                  <div id="entries" class="single-source-cards"></div>
+                </div>
+              </div>
+              <div id="viewer-page-container" class="hidden">
                 <div class="viewer-page">
                   <div id="home">
                     <div id="sections-header">

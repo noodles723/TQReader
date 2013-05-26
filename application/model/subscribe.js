@@ -116,7 +116,12 @@ var Subscribe = (function(_super){
     }
 
     Subscribe.prototype.feedComplete = function(res){
-        console.log('subscribe:'+res.status);
+        if(res.status === 'success') {
+            this.result = res;
+        } else {
+            //TODO 错误处理
+        }
+
         $('#loading-area-container').addClass('hidden');
     };
     return Subscribe;

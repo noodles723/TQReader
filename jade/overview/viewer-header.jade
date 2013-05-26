@@ -1,0 +1,31 @@
+#viewer-header
+    #viewer-top-controls-container
+        #viewer-top-controls
+            .lhn-nav-button-container
+            div(role='button',id='viewer-refresh',class='goog-inline-block jfk-button jfk-button-standard viewer-buttons',tabindex='0',title='Refresh')
+                img(src='./images/refresh.png',class='jfk-button-img')
+            div(id='viewer-view-options',class='goog-inline-block goog-flat-menu-button',aria-expanded='false',role='listbox',tabindex='0')
+                div.goog-inline-block.goog-flat-menu-button-caption All items
+                div.goog-inline-block.goog-flat-menu-button-dropdown &nbsp;
+            span#mark-all-as-read-split-button
+                div(role='button',class='goog-inline-block jfk-button jfk-button-standard jfk-button-collapse-right',tabindex='0') Mark all as read
+                div.goog-inline-block.goog-flat-menu-button.goog-flat-menu-button-collapse-left.ml-5(tabindex='0')
+                    div.goog-inline-block.goog-flat-menu-button-caption
+                    div.goog-inline-block.goog-flat-menu-button-dropdown &nbsp;
+            div(role='wairole:button',tabindex='0',class='goog-button goog-button-base unselectable goog-inline-block goog-button-float-left goog-menu-button goog-button-tight',id='stream-prefs-menu')
+                div.goog-button-base-outer-box.goog-inline-block
+                    div.goog-button-base-inner-box.goog-inline-block
+                        div.goog-button-base-pos
+                            div.goog-button-base-content
+                                div.goog-button-body Feed settings...
+                                div.goog-menu-button-dropdown
+            span#settings-button-container
+                div(role='button',id='settings-button',class='goog-inline-block jfk-button jfk-button-standard viewer-buttons goog-flat-menu-button',tabindex='0',title='Settings')
+                    div.goog-inline-block.goog-flat-menu-button-caption
+                        img(src='./images/settings.png',class='jfk-button-img')
+                    div.goog-inline-block.goog-flat-menu-button-dropdown &nbsp;
+            span#item-up-down-buttons
+                div(role='button',id='entries-up',class='goog-inline-block jfk-button jfk-button-standard jfk-button-collapse-right jfk-button-narrow',tabindex='0',title='Previous item')
+                    img(src='./images/up_arrow.png',class='jfk-button-img')
+                div(role='button',id='entries-down',class='goog-inline-block jfk-button jfk-button-standard jfk-button-collapse-left jfk-button-narrow ml-5',tabindex='0',title='Next item')
+                    img(src='./images/down_arrow.png',class='jfk-button-img')

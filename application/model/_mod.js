@@ -82,7 +82,7 @@ var Model = (function(){
      */
     Model.prototype.req = function(opt) {
         var defaultOpt = {
-            type: 'GET',
+            type: 'POST',
             dataType: 'json',
             url: this.hostname+this.indexPath+this.method
         };
@@ -108,6 +108,7 @@ var Model = (function(){
      * @method fetch
      */
     Model.prototype.fetch = function(data){
+        console.log('data:'+data);
         this.req({
             data: data
         }).done(this.proxy(function(res){

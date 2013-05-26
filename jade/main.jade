@@ -9,7 +9,7 @@ html
         div#main
             div#nav
                 include ./overview/nav
-            div#chrome.page-view
+            div#chrome
                 div#chrome-viewer-cotainer
                     div#chrome-viewer
                         div#viewer-header-container
@@ -18,7 +18,7 @@ html
                         div#viewer-container
                             div#viewer-entries-container
                                 include ./overview/viewer-entries-container
-                            div#viewer-page-container
+                            div#viewer-page-container.hidden
                                 include ./overview/viewer-page-container
         script.
             window.pageinfo = {
