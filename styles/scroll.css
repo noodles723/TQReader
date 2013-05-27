@@ -515,7 +515,6 @@ font-weight: bold;
 overflow: hidden;
 white-space: nowrap;
 padding-bottom: 1px;
-float: left;
 }
 #chrome-title a {
 color: #444;
@@ -540,9 +539,6 @@ z-index: 1;
 zoom: 1;
 outline: 0;
 }
-.cards .entry-0 {
-margin-top: 10px;
-}
 #entries .entry, #entries.list .entry-container {
 background: #fff;
 margin: 0;
@@ -550,9 +546,6 @@ margin: 0;
 #entries .entry {
 position: relative;
 zoom: 1;
-}
-#entries.cards .entry {
-margin: 10px 0 20px;
 }
 .card-common {
 margin: 0;
@@ -610,14 +603,6 @@ color: #444;
 .entry .entry-title a {
 text-decoration: none;
 }
-.entry-title-go-to {
-padding-left: 16px;
-height: 17px;
-background: url(/reader/ui/3904077461-entry-action-icons.png) no-repeat left -413px;
-margin-left: 2px;
-opacity: .4;
-filter: alpha(opacity=40);
-}
 .entry .entry-title a div {
 display: inline;
 }
@@ -628,4 +613,54 @@ display: inline-block;
 display: inline-block;
 width:18px;
 margin-left:.5em;
+}
+#entries .entry {
+margin: 10px 0 20px;
+}
+#entries .card-content {
+padding: 10px;
+}
+.entry .entry-body {
+padding-top: .5em;
+}
+.read .entry-container .entry-body {
+color: #222;
+}
+.entry .entry-actions {
+padding: 6px 7px;
+direction: ltr;
+}
+.samedir .entry .entry-actions {
+text-align: left;
+}
+.entry .entry-actions a, .entry .entry-actions .link {
+text-decoration: none;
+color: #444;
+}
+.entry .entry-actions .star, .entry .entry-actions .dislike, .entry .entry-actions .read-state, .entry .entry-actions .email, .entry .entry-actions .tag, .entry .entry-icons .star {
+background: transparent url(../images/entry_action.png) no-repeat;
+padding: 1px 0 1px 16px;
+margin-right: 16px;
+white-space: nowrap;
+}
+.entry .entry-actions .item-star, .entry .entry-icons .item-star {
+background-position: -102px -1px;
+}
+#entries #scroll-filler {
+position: relative;
+width: 100%;
+padding-bottom: 1em;
+text-align: center;
+}
+#entries .scroll-filler-message {
+position: absolute;
+color: #999;
+font-size: 110%;
+top: 50%;
+margin-top: -0.5em;
+width: 100%;
+}
+#single-item-bottom-links {
+padding: 2em;
+text-align: center;
 }

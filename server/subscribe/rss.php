@@ -8,10 +8,10 @@ function getRss($type) {
     for($i=0;$i<3;$i++){
         $title = $items->item($i)->getElementsByTagName('title')->item(0)->firstChild->nodeValue;
         $link = $items->item($i)->getElementsByTagName('link')->item(0)->firstChild->nodeValue;
-        if ($description = $items->item($i)->getElementsByTagNameNS($NC_CONTENT,'encoded')){
-            $description = $description->item(0)->firstChild->nodeValue;
+        if ($description = $items->item($i)->getElementsByTagNameNS($NC_CONTENT,'encoded')->item(0)){
+            $description = $description->firstChild->nodeValue;
         } else {
-            $description = $items->item($i)->getElementsByTagName('description')->item(0)->childNodes->item(0)->nodeValue;
+            $description = $items->item($i)->getElementsByTagName('description')->item(0)->firstChild->nodeValue;
         }
         $pubDate = $items->item($i)->getElementsByTagName('pubDate')->item(0)->firstChild->nodeValue;
         $creator = $items->item($i)->getElementsByTagName('creator')->item(0)->firstChild->nodeValue;

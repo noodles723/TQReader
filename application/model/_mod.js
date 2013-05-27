@@ -46,14 +46,15 @@ var Model = (function(){
          * @type String
          */
         this.moduleName = '';
-
+        
         /**
-         * 获得的数据
+         * 结果
          *
          * @property result
-         * @type Object
+         * @type String
          */
-        this.result = {};
+        this.result = '';
+
     }
 
     /**
@@ -88,17 +89,16 @@ var Model = (function(){
         };
         opt = $.extend(defaultOpt,opt);
 
-        // TODO 触发加载框
-        //Event.trigger('start.loading',{event: this.moduleName});
+        Event.trigger('start-loading');
         return $.ajax(opt)
                 .success($.proxy(function(res){
-                    //Event.trigger('end.loading',{event: this.moduleName});
+                    Event.trigger('end-loading');
                 },this))
                 .fail($.proxy(function(res){
                     if(res.status == 200){
                         return;
                     }
-                    //Event.trigger('failed.loading',{event:this.moduleName,msg:res.status+':'+res.statusText});
+                    Event.trigger('failed-loading');
                 },this));
     };
 
@@ -108,7 +108,6 @@ var Model = (function(){
      * @method fetch
      */
     Model.prototype.fetch = function(data){
-        console.log('data:'+data);
         this.req({
             data: data
         }).done(this.proxy(function(res){

@@ -60,6 +60,7 @@ var Subscribe = (function(_super){
 
             subscribeBtn.click(function(){
                 $('#quick-add-bubble-holder').toggle();
+                $('#quickadd').focus();
             });
 
             $('#quick-add-close').click(function(){
@@ -77,7 +78,6 @@ var Subscribe = (function(_super){
                     console.log(formStr);
                     $('#quick-add-bubble-holder').hide();
                     $('#quick-add-helptext').html(this.helpText);
-                    $('#loading-area-container').removeClass('hidden');
                     this.fetch(formStr);
                 }
                 return false;
@@ -93,7 +93,8 @@ var Subscribe = (function(_super){
             var data = {};
 
             data.data = $('#quickadd').val();
-
+            // TODO 检查输入格式
+            
             Validator.config = {
                 data: 'isNonEmpty' 
             };
@@ -107,23 +108,26 @@ var Subscribe = (function(_super){
             }
         };
 
-        /**
-         * 订阅表单提交事件
-         *
-         * @event fetched.subscribe
-         */
-        Event.bind('fetched.subscribe',$.proxy(this.feedComplete,this));
     }
-
-    Subscribe.prototype.feedComplete = function(res){
-        if(res.status === 'success') {
-            this.result = res;
-        } else {
-            //TODO 错误处理
-        }
-
-        $('#loading-area-container').addClass('hidden');
+    
+    /**
+     * 获取刚订阅的参数信息
+     *
+     * @method fetch
+     * @param {String} subUrl
+     */
+    Subscribe.prototype.fetch = function(reqData) {
+        this.req({
+            data:reqData
+        }).done(this.proxy(function(res) {
+            console.log("fetched-posts");
+            if(res.status === 'success') {
+                // TODO 更改列表
+                Event.trigger('fetched-posts',res);
+            }
+        }));  
     };
+
     return Subscribe;
 }(Model));
             

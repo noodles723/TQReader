@@ -1,6 +1,7 @@
 define([
-        './widget/auth'
-        ], function(Auth) {
+        'widget/auth',
+        'widget/screen'
+        ], function(Auth,Screen) {
 
 /**
  * 所有页面类的基类
@@ -75,6 +76,13 @@ var Page = (function() {
     Page.prototype.proxy = function(fn) {
         return $.proxy(fn, this);
     };
+
+    /**
+     * 注册屏幕自适应
+     *
+     * @method fitScreen
+     */
+    Screen.fitScreen();
 
     return Page;
 }());

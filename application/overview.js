@@ -2,17 +2,17 @@ define(['app/_page',
         
         //'controller/feed-list',
         //'controller/page-list',
-        //'controller/post-list',
+        'controller/view-posts',
         //'controller/settings',
 
-        'model/subscribe',
-        'model/lists'
+        'model/subscribe'
+        //'model/lists'
         //'model/home-page'
         //'model/posts',
         //'model/recently-tips',
         ],function(Page,
-            Subscribe,
-            Lists){
+            PostView,
+            Subscribe){
 
 /**
  * 主页面
@@ -38,14 +38,14 @@ var MainPage = (function(_super){
         // 创建控制器
         //var feedList = this.controllers.feedList = new FeenList();
         //var pageList = this.controllers.pageList = new PageList();
-        //var postList = this.controllers.postList = new PostList();
+        var postView = this.controllers.postView = new PostView();
         //var settings = this.controllers.settings = new Settings();
 
         // 初始化模型
         subscribe.init();
-        //lists.init();
 
         // 初始化控制器
+        postView.init();
 
     }
     return MainPage;
