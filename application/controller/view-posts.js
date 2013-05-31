@@ -20,7 +20,7 @@ var Post = (function(){
          * @property titleEl
          * @type jQueryObject
          */
-        this.titleEl = $('#chrome-title a');
+        this.titleEl = $('#chrome-title>a');
 
         /**
          * entries node
@@ -29,6 +29,22 @@ var Post = (function(){
          * @type jQueryObject
          */
         this.entriesEl = $('#entries');
+
+        /**
+         * 所有posts数据
+         *
+         * @property posts
+         * @type Object
+         */
+        this.posts = {};
+
+        /**
+         * 当前聚焦的post
+         *
+         * @property curPostNum
+         * @type Number
+         */
+        this.curPostNum = 0;
 
         /**
          * 获取post事件
@@ -73,34 +89,26 @@ var Post = (function(){
      * @method showPosts
      */
     Post.prototype.showPosts = function(posts){
-        var i,el;
-        for(i=0;i<posts.length;i++) {
-            this.createPostCard(i);
-            el = $('#entries .entry-'+i);
-            el.find('.entry-date').append(posts[i].pubDate);
-            el.find('.entry-title-link').attr('href',posts[i].link);
-            el.find('.entry-title-link').append(posts[i].title);
-            el.find('.entry-author-name').append(posts[i].creator);
-            el.find('.item-body>div').append(posts[i].description);
-            // 解决防盗链
-            var img = el.find('.item-body img');
-            var src,j;
-            for(j=0;j<img.length;j++){
-                src = img[j].src;
-                img[j].src = 'http://localhost/server/post/img.php?p='+src;
-            }
+        var i,length;
+        this.posts = posts;
+
+        length = posts.length>5 ? 5:posts.length;
+        for(i=0;i<length;i++) {
+            this.createPostCard(i,posts[i]);
         }
         
-        $('<div id="scroll-filler" style="height:0px;"><div id="scroll-filler-recs-message" class="scroll-filler-message"><div>You have no more items.</div></div></div>').appendTo(this.entriesEl);
+        // TODO 没有新的post显示时记得加上
+        //$('<div id="scroll-filler" style="height:0px;"><div id="scroll-filler-recs-message" class="scroll-filler-message"><div>You have no more items.</div></div></div>').appendTo(this.entriesEl);
     };
 
     /**
-     * 添加每个post的基本html
+     * 添加一个post card
      *
      * @method createPostCard
-     * @param {Number} i post的序列号，或者ID
+     * @param {Number} i post的序列号，或者ID {Object} post post的内容对象
      */
-    Post.prototype.createPostCard = function(i){
+    Post.prototype.createPostCard = function(i,post){
+        // 插入基本html
         var html = '<div class="entry entry-'+i+'" style="height:auto;">'+
             '<div class="card card-common">'+
                 '<div class="card-content">'+
@@ -119,9 +127,25 @@ var Post = (function(){
                     '<div class="entry-actions">'+
                         '<span class="item-star star link unselectable" title="Add star"></span></div></div>'+
             '</div></div>';
-
         $(html).appendTo(this.entriesEl);
+
+        // 添加内容
+        var el = $('#entries .entry-'+i);
+        el.find('.entry-date').append(post.pubDate);
+        el.find('.entry-title-link').attr('href',post.link);
+        el.find('.entry-title-link').append(post.title);
+        el.find('.entry-author-name').append(post.creator);
+        el.find('.item-body>div').append(post.description);
+
+        // 解决防盗链
+        var img = el.find('.item-body img');
+        var src,j;
+        for(j=0;j<img.length;j++){
+            src = img[j].src;
+            img[j].src = 'http://localhost/server/post/img.php?p='+src;
+        }
     };
+
     return Post;
 }());
 

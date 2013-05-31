@@ -89,6 +89,7 @@ var Model = (function(){
         };
         opt = $.extend(defaultOpt,opt);
 
+        console.log(opt);
         Event.trigger('start-loading');
         return $.ajax(opt)
                 .success($.proxy(function(res){

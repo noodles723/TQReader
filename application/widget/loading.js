@@ -3,7 +3,7 @@ define(['jquery',
         ],function($,Event){
         
 var loadingEl = $('#loading-area-container');
-
+console.log('loading');
 function loadingStart() { 
     loadingEl.removeClass('hidden');
 }

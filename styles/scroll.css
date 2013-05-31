@@ -664,3 +664,52 @@ width: 100%;
 padding: 2em;
 text-align: center;
 }
+
+/**
+ * for confirm dialog
+ */
+.fr-modal-dialog-bg {
+position: absolute;
+top: 0;
+left: 0;
+background-color: #666;
+z-index: 2000;
+}
+.fr-modal-dialog {
+position: absolute;
+z-index: 2001;
+}
+.fr-modal-dialog {
+top: 0;
+left: 0;
+width: 500px;
+background-color: #fff;
+border: 6px solid #c2cff1;
+}
+.fr-modal-dialog-title {
+position: relative;
+background-color: #ebeff9;
+padding: 10px 8px;
+font-weight: bold;
+font-size: 145%;
+cursor: default;
+}
+.fr-confirm-dialog .fr-modal-dialog-title {
+padding: 0;
+}
+.fr-modal-dialog-content {
+background-color: #fff;
+padding: 2px 7px;
+overflow: auto;
+}
+.fr-confirm-dialog .fr-modal-dialog-content {
+padding-top: 10px;
+}
+.fr-modal-dialog-buttons {
+background-color: #fff;
+padding: 4px;
+text-align: right;
+}
+.fr-modal-dialog-buttons button {
+margin: 5px;
+}

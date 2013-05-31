@@ -1,6 +1,7 @@
 define([
         'widget/auth',
-        'widget/screen'
+        'widget/screen',
+        'widget/loading'
         ], function(Auth,Screen) {
 
 /**

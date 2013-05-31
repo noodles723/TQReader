@@ -76,7 +76,9 @@
               <div class="lhn-section-primary"><span id="sub-tree-header" class="unselectable">Subscriptions</span><span id="sub-tree-refreshing" class="hidden">refreshing...</span></div>
               <div id="sub-tree-container" class="scroll-tree-container lhn-section-secondary">
                 <ul id="sub-tree" class="scroll-tree">
-                  <li id="sub-tree-item-0-main" class="folder unselectable expanded"></li>
+                  <li id="sub-tree-item-0-main" class="folder unselectable expanded">
+                    <ul></ul>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -199,6 +201,15 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div role="bg" class="fr-confirm-dialog fr-modal-dialog-bg hidden"></div>
+    <div tabindex="0" role="dialog" class="fr-confirm-dialog fr-modal-dialog hidden">
+      <div id=":em" class="fr-confirm-dialog fr-modal-dialog-title fr-confirm-dialog gr-modal-dialog-title-draggable fr-confirm-dialog fr-modal-dialog-title-draggable"><span class="fr-confirm-dialog fr-modal-dialog-title-text"></span><span class="fr-confirm-dialog fr-modal-dialog-title-close"></span></div>
+      <div class="fr-confirm-dialog fr-modal-dialog-content">Are you sure that you'd like to unsubscribe from </div>
+      <div class="fr-confirm-dialog fr-modal-dialog-buttons">
+        <button name="ok" class="goog-buttonset-default">OK</button>
+        <button name="cancel">Cancel</button>
       </div>
     </div>
     <script>

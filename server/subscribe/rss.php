@@ -5,7 +5,8 @@ function getRss($type) {
     $NC_CONTENT = 'http://purl.org/rss/1.0/modules/content/';
     $items = $type->getElementsByTagName('item');
     $data = array();
-    for($i=0;$i<3;$i++){
+    
+    for($i=0;$i<$items->length;$i++){
         $title = $items->item($i)->getElementsByTagName('title')->item(0)->firstChild->nodeValue;
         $link = $items->item($i)->getElementsByTagName('link')->item(0)->firstChild->nodeValue;
         if ($description = $items->item($i)->getElementsByTagNameNS($NC_CONTENT,'encoded')->item(0)){

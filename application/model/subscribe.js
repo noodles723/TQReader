@@ -117,17 +117,20 @@ var Subscribe = (function(_super){
      * @param {String} subUrl
      */
     Subscribe.prototype.fetch = function(reqData) {
+        this.method = 'subscribe/subscribe.php';
         this.req({
             data:reqData
         }).done(this.proxy(function(res) {
             console.log("fetched-posts");
             if(res.status === 'success') {
+                //debugger;
                 // TODO 更改列表
                 Event.trigger('fetched-posts',res);
+                Event.trigger('update-list',res);
             }
         }));  
     };
-
+    
     return Subscribe;
 }(Model));
             
